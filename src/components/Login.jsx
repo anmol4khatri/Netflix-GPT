@@ -12,7 +12,7 @@ const Login = () => {
         <div className="relative h-screen">
 
             {/* Background Image */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 max-sm:hidden">
                 <img
                     className=""
                     src="https://assets.nflxext.com/ffe/siteui/vlv3/cb17c41d-6a67-4472-8b91-cca977e65276/web/IN-en-20250505-TRIFECTA-perspective_03ae1a85-5dcf-4d20-a8a6-1e61f7ef73cb_small.jpg"
@@ -22,12 +22,12 @@ const Login = () => {
 
             {/* Netflix Logo */}
             <div className="absolute top-0 left-0 z-10 bg-gradient-to-b from-black">
-                <img className="w-60" src={Netflix_Logo} alt="logo" />
+                <img className="w-60 max-sm:w-40 max-sm:m-5" src={Netflix_Logo} alt="logo" />
             </div>
 
             {/* Form Container */}
-            <div className="absolute w-115 h-140 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/85 p-14
-      rounded-lg mt-8">
+            <div className="absolute w-4/12 h-8/12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/85 p-14
+      rounded-lg mt-8 max-sm:bg-black max-sm:w-full max-sm:h-full max-sm:mt-0 max-sm:rounded-none max-sm:pt-28">
                 <h3 className="text-white text-3xl font-bold">{IsSignInPage ? "Sign In" : "Sign Up"}</h3>
                 <form action="" className="flex flex-col pt-8 gap-4">
                     {!IsSignInPage &&
