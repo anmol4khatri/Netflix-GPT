@@ -22,21 +22,21 @@ const Login = () => {
 
             {/* Netflix Logo */}
             <div className="absolute top-0 left-0 z-10 bg-gradient-to-b from-black">
-                <img className="w-60 max-sm:w-40 max-sm:m-5" src={Netflix_Logo} alt="logo" />
+                <img className="w-60 max-sm:w-30 max-sm:m-3" src={Netflix_Logo} alt="logo" />
             </div>
 
             {/* Form Container */}
             <div className="absolute w-4/12 h-8/12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/85 p-14
-      rounded-lg mt-8 max-sm:bg-black max-sm:w-full max-sm:h-full max-sm:mt-0 max-sm:rounded-none max-sm:pt-28">
-                <h3 className="text-white text-3xl font-bold">{IsSignInPage ? "Sign In" : "Sign Up"}</h3>
+      rounded-lg mt-8 max-sm:bg-black max-sm:w-full max-sm:h-full max-sm:mt-0 max-sm:rounded-none max-sm:p-7">
+                <h3 className="text-white text-3xl font-bold max-sm:pt-12">{IsSignInPage ? "Sign In" : "Sign Up"}</h3>
                 <form action="" className="flex flex-col pt-8 gap-4">
                     {!IsSignInPage &&
                         <div className="flex gap-3">
-                            <input type="text" placeholder="First Name" className="text-lg text-white border-[0.1px] rounded-s p-3 w-1/2 " />
-                            <input type="text" placeholder="Last Name" className="text-lg text-white border-[0.1px] rounded-s p-3 w-1/2" />
+                            <input type="text" placeholder="First Name" className="text-lg text-white border-[0.1px] rounded-lg p-3 w-1/2 " />
+                            <input type="text" placeholder="Last Name" className="text-lg text-white border-[0.1px] rounded-lg p-3 w-1/2" />
                         </div>}
-                    <input type="text" placeholder="Email or mobile number" className="text-lg text-white border-[0.1px] rounded-s p-3 " />
-                    <input type="password" placeholder={IsSignInPage ? "Password" : "Create Password"} className="text-lg text-white border-[0.1px] rounded-s p-3 " />
+                    <input type="text" placeholder="Email or mobile number" className="text-lg text-white border-[0.1px] rounded-lg p-3" />
+                    <input type="password" placeholder={IsSignInPage ? "Password" : "Create Password"} className="text-lg text-white border-[0.1px] rounded-lg p-3 " />
                     <button className="text-white font-medium bg-red-600 rounded-lg p-3 cursor-pointer">{IsSignInPage ? "Sign In" : "Sign Up"}</button>
                     <div className="space-x-2 my-4">
                         <span className="text-gray-300">{IsSignInPage ? "New to Netflix ?" : "Already have a account ?"}</span>
