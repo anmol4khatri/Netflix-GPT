@@ -39,8 +39,8 @@ const Login = () => {
                     <input type="password" placeholder={IsSignInPage ? "Password" : "Create Password"} className="text-lg text-white border-[0.1px] rounded-s p-3 " />
                     <button className="text-white font-medium bg-red-600 rounded-lg p-3 cursor-pointer">{IsSignInPage ? "Sign In" : "Sign Up"}</button>
                     <div className="space-x-2 my-4">
-                        <span className="text-gray-300">New to Netflix ?</span>
-                        <span className="text-white font-semibold cursor-pointer" onClick={handleToggle}>Sign up now</span>
+                        <span className="text-gray-300">{IsSignInPage ? "New to Netflix ?" : "Already have a account ?"}</span>
+                        <span className="text-white font-semibold cursor-pointer" onClick={handleToggle}>{IsSignInPage ? "Sign up now" : "Sign in"}</span>
                     </div>
                 </form>
             </div>
