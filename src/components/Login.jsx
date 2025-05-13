@@ -1,6 +1,8 @@
 import { Netflix_Logo } from "../utils/constants";
 import { useRef, useState } from "react";
-import {checkValidData} from "../utils/loginValidation"
+import { checkValidData } from "../utils/loginValidation";
+import { auth } from "../utils/firebaseConfig";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
 
@@ -13,10 +15,49 @@ const Login = () => {
     //Form Validation
     const email = useRef();
     const password = useRef();
-    const[ErrorMessage,setErrorMessage] = useState(null);
+    const [ErrorMessage, setErrorMessage] = useState(null);
     const handleSubmit = () => {
-        const message = checkValidData(email.current.value,password.current.value);
+        const message = checkValidData(email.current.value, password.current.value);
         setErrorMessage(message);
+
+        if (message) return;
+        if (!IsSignInPage) {
+            //!IsSignInPage means the user is on the Sign Up Page
+            //Sign Up (Creating a new user)
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    // ...
+                    console.log(user);
+                    setIsSignInPage(true);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                    setErrorMessage("Error" + errorCode + ": " + errorMessage)
+                }
+                );
+        }
+        else {
+            //IsSignInPage means the user is on the Sign In Page
+            //Sign In (Leting the user login into an existing account)
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    // ...
+                    console.log(user);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ...
+                    setErrorMessage("Error" + errorCode + ": " + errorMessage)
+                }
+                );
+        };
     };
 
     return (
