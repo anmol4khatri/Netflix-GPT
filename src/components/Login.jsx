@@ -37,7 +37,7 @@ const Login = () => {
             </div>
 
             {/* Form Container */}
-            <div className="absolute w-4/12 h-8/12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/85 p-14
+            <div className="absolute w-4/12 h-9/12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/85 p-14
       rounded-lg mt-8 max-sm:bg-black max-sm:w-full max-sm:h-full max-sm:mt-0 max-sm:rounded-none max-sm:p-7">
                 <h3 className="text-white text-3xl font-bold max-sm:pt-12">{IsSignInPage ? "Sign In" : "Sign Up"}</h3>
                 <form onSubmit={(e) => e.preventDefault()} action="" className="flex flex-col pt-8 gap-4">
