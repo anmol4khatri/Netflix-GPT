@@ -1,8 +1,12 @@
 import { Netflix_Logo } from "../utils/constants";
-import { useRef, useState } from "react";
+import { useRef, useState,useEffect } from "react";
 import { checkValidData } from "../utils/loginValidation";
 import { auth } from "../utils/firebaseConfig";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router"
+import { onAuthStateChanged } from 'firebase/auth';
+import { addUser, removeUser } from '../utils/userSlice';
 
 const Login = () => {
 
@@ -28,14 +32,10 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
-                    // ...
-                    console.log(user);
-                    setIsSignInPage(true);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    // ..
                     setErrorMessage("Error" + errorCode + ": " + errorMessage)
                 }
                 );
@@ -47,18 +47,35 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    // ...
-                    console.log(user);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    // ...
                     setErrorMessage("Error" + errorCode + ": " + errorMessage)
                 }
                 );
         };
     };
+
+    //Firebase AuthListner
+    //This AuthListner is subscribed to redux store that manages the state of user
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    useEffect(() => {
+	onAuthStateChanged(auth, (user) => {
+		if (user) {
+			// User is signed in
+			const {uid, email, displayName} = user;
+			dispatch(addUser({uid: uid, email: email, displayName: displayName}));
+            navigate("/browse");
+		}
+		else {
+			// User is signed out
+			dispatch(removeUser());
+            navigate("/");
+		}
+	});
+    }, [])
 
     return (
         <div className="relative h-screen">
