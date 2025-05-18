@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
@@ -13,7 +12,7 @@ const ProtectedLayout = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unscbscribe =  onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         const uid = user.uid;
@@ -25,7 +24,7 @@ const ProtectedLayout = () => {
         navigate("/");
       }
     });
-
+    return () => unscbscribe();
   }, []);
 
   return <Outlet />;
