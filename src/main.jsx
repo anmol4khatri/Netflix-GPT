@@ -1,20 +1,26 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import Login from './components/Login';
-import Browse from './components/Browse';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Login from './pages/Login';
+import Browse from './pages/Browse';
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
+import ProtectedLayout from "./pages/ProtectedLayout";
 
 
 let router = createBrowserRouter([
 	{
-		path: "/",
-		Component: Login,
-	},
-	{
-		path: "/browse",
-		Component: Browse,
+		element: <ProtectedLayout/>,
+		children: [
+			{
+				path: "/",
+				element: <Login/>
+			},
+			{
+				path: "/browse",
+				element: <Browse/>
+			}
+		]
 	}
 ]);
 

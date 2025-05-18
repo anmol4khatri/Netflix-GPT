@@ -1,20 +1,18 @@
 import { Netflix_Logo } from "../utils/constants";
-import { useNavigate } from "react-router";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
 
 const Header = () => {
-    const navigate = useNavigate();
+
     const handleLogout = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
-            navigate("/");
         }).catch((error) => {
             // An error happened.
         });
     }
 
-    return(
+    return (
         <div className="flex justify-between">
             <div className="top-0 left-0 z-10 from-black flex gap-8">
                 <img className="w-50 max-sm:w-30 max-sm:m-3" src={Netflix_Logo} alt="logo" />
@@ -27,7 +25,7 @@ const Header = () => {
             </div>
             <div className="m-6 text-white flex gap-5">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABb0lEQVR4nO2VO05CQRiFr5hoIVr52AMsAqQ2iqJxCUQLtDGEWCmVj3UYOwkuw4iv1hAW4BMNsVA/M8kh3gYchrmFyT3JVPf7zzlzXxMEsWL9NwGzQBW4At61GsA+MBN1+CrQprdegZUow78VdAZkgAmtLFDTtS9gOYrb3lbATh+uLOYFmPZZoNrduQVbF7vns8C1TDMW7LzYhs8CbzJNWrCTYts+CzwPUGBK7JPPApcyzVqwObEXPgvsyrRmwZ6LrfgsMAc8yrjch6uIeTCfrrcCRubnAnwqoK63PamVC+3cMPkgCgEF/el6yVwrRBW+CNzztwyz4DN4BDgKBdwAJSAVOgvSwBZwK8acGQdm1keBY5l+AEUg0YdNABtijQ6HDc+HwjMDzGVDJZZcw8eBlkyKDvObmm0CYy4F1kPPPOEwPwrcyWPNpcCphksDD/96bMvjxGW4qeHUEAXS3U/TZbhjewJaHM0dV49YsYKo9QOixZ4KLtJpYwAAAABJRU5ErkJggg==" alt="gender-neutral-user"
-                className="cursor-pointer"></img>
+                    className="cursor-pointer"></img>
                 <h4 className="font-semibold mr-2 mt-1.5 cursor-pointer" onClick={handleLogout}>Logout</h4>
             </div>
         </div>

@@ -1,30 +1,28 @@
 import { Netflix_Logo } from "../utils/constants";
-import { useRef, useState,useEffect } from "react";
+import { useRef, useState,} from "react";
 import { checkValidData } from "../utils/loginValidation";
 import { auth } from "../utils/firebaseConfig";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useDispatch } from 'react-redux';
-import { useNavigate } from "react-router"
-import { onAuthStateChanged } from 'firebase/auth';
-import { addUser, removeUser } from '../utils/userSlice';
 
 const Login = () => {
+   
+    const [IsSignInPage, setIsSignInPage] = useState(true);
+    const [ErrorMessage, setErrorMessage] = useState(null);
+
+    const email = useRef();
+    const password = useRef();
 
     //Switch btw SignIn/SignUp
-    const [IsSignInPage, setIsSignInPage] = useState(true);
     const handleToggle = () => {
         setIsSignInPage(!IsSignInPage);
     };
 
     //Form Validation
-    const email = useRef();
-    const password = useRef();
-    const [ErrorMessage, setErrorMessage] = useState(null);
     const handleSubmit = () => {
         const message = checkValidData(email.current.value, password.current.value);
         setErrorMessage(message);
-
         if (message) return;
+        
         if (!IsSignInPage) {
             //!IsSignInPage means the user is on the Sign Up Page
             //Sign Up (Creating a new user)
@@ -57,31 +55,11 @@ const Login = () => {
         };
     };
 
-    //Firebase AuthListner
-    //This AuthListner is subscribed to redux store that manages the state of user
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    useEffect(() => {
-	onAuthStateChanged(auth, (user) => {
-		if (user) {
-			// User is signed in
-			const {uid, email, displayName} = user;
-			dispatch(addUser({uid: uid, email: email, displayName: displayName}));
-            navigate("/browse");
-		}
-		else {
-			// User is signed out
-			dispatch(removeUser());
-            navigate("/");
-		}
-	});
-    }, [])
-
     return (
         <div className="relative h-screen">
 
             {/* Background Image */}
-            <div className="absolute inset-0 max-sm:hidden">
+            <div className="absolute0 inset-0 max-sm:hidden">
                 <img
                     className=""
                     src="https://assets.nflxext.com/ffe/siteui/vlv3/cb17c41d-6a67-4472-8b91-cca977e65276/web/IN-en-20250505-TRIFECTA-perspective_03ae1a85-5dcf-4d20-a8a6-1e61f7ef73cb_small.jpg"
