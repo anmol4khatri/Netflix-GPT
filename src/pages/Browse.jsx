@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import Poster from "../components/Poster";
+import Poster from "./Poster";
 import useNowPlaying from "../hooks/useNowPlaying";
 
 const Browse = () => {
