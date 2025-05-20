@@ -10,10 +10,6 @@ const Browse = () => {
     <div className="">
       <Header />
       <Poster />
-      {/*
-        Poster
-        Discover
-      */}
     </div>
   )
 }
