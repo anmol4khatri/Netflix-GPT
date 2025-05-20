@@ -13,7 +13,7 @@ const Header = () => {
     }
 
     return (
-        <div className="flex justify-between bg-black">
+        <div className="absolute top-0 left-0 w-full flex justify-between z-15">
             <div className="top-0 left-0 z-10 from-black flex gap-8">
                 <img className="w-50 max-sm:w-30 max-sm:m-3" src={Netflix_Logo} alt="logo" />
                 <div className="flex gap-8 mt-7 mb-7 text-lg font-semibold text-white">
