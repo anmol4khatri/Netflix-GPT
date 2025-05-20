@@ -1,7 +1,7 @@
 const VideoText = ({ title, overview }) => {
     return (
-        <div className="w-2/3 h-full absolute z-10 text-white p-5 bg-gradient-to-r from-black">
-            <div className="w-2/3 pt-80 pl-10">
+        <div className="w-full aspect-video absolute z-10 text-white p-5 bg-gradient-to-r from-black">
+            <div className="w-2/5 pt-[18%] pl-10">
                 <h1 className="text-5xl mb-7 font-extrabold">{title}</h1>
                 <h3 className="font-semibold">{overview}</h3>
                 <div className="flex gap-6 mt-5 cursor-pointer">

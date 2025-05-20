@@ -11,8 +11,10 @@ const useClips = (movieID) => {
         if (!movieID) return;
         const clips = await fetch("https://api.themoviedb.org/3/movie/" + movieID + "/videos?language=en-US", API_OPTIONS);
         const json = await clips.json();
-        const selectedClip = await json.results.filter(results => results.type == "Teaser")[0];
-        const key = selectedClip.key;
+        const selectedClip = json.results.filter(result =>
+            ["Teaser", "Trailer", "Clip"].includes(result.type)
+        );
+        const key = selectedClip[0].key;
         dispatch(addteaserPlaying(key));
     };
     useEffect(() => {
