@@ -25,9 +25,9 @@ let router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-	<StrictMode>
+	// <StrictMode>
 		<Provider store={appStore}>
 			<RouterProvider router={router} />
 		</Provider>
-	</StrictMode>,
+	// </StrictMode>,
 )
