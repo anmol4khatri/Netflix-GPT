@@ -18,4 +18,3 @@ const Poster = () => {
 };
 
 export default Poster;
-// bg-gradient-to-r from-black
