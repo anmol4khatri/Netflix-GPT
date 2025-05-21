@@ -4,7 +4,7 @@ const MovieCard = ({poster}) => {
     if (!poster) return null;
     
     return(
-        <div className="min-w-50">
+        <div className="min-w-52">
             <img className="rounded-xl" src={IMG_CDN_PREFIX + poster} alt="Poster" />
         </div>
     );
