@@ -12,7 +12,7 @@ const TvShows = () => {
     useTopRatedShows();
 
     return(
-        <div className="">
+        <div className="pb-12 bg-black">
             <Header/>
             <BrowseShows/>
         </div>

@@ -14,7 +14,7 @@ const Browse = () => {
   useUpcoming();
 
   return (
-    <div className="">
+    <div className="pb-12 bg-black">
       <Header />
       <Poster />
       <Discover />
