@@ -8,7 +8,7 @@ const Discover = () => {
     
     return(
         <div className="bg-black">
-            <div className="w-full pl-10 pr-10 relative z-20 -mt-60">
+            <div className="w-full pl-10 pr-10 relative z-20 -mt-56">
                 {Array.isArray(movies?.nowPlayingMovies) && (
                     <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies} />
                 )}

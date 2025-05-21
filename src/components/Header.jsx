@@ -1,8 +1,12 @@
 import { Netflix_Logo } from "../utils/constants";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
+import { useLocation, useNavigate } from "react-router";
 
 const Header = () => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogout = () => {
         signOut(auth).then(() => {
@@ -12,15 +16,25 @@ const Header = () => {
         });
     }
 
+    const handleTvShows = () => {
+        navigate("/tvshows");
+    };
+    const handleMovies = () => {
+        navigate("/browse");
+    };
+
     return (
         <div className="absolute top-0 left-0 w-full flex justify-between z-15 bg-black">
             <div className="top-0 left-0 z-10 from-black flex gap-8">
                 <img className="w-50 max-sm:w-30 max-sm:m-3" src={Netflix_Logo} alt="logo" />
                 <div className="flex gap-8 mt-7 mb-7 text-lg font-semibold text-white">
-                    <h3 className="cursor-pointer hover:border-b-2">Home</h3>
-                    <h3 className="cursor-pointer hover:border-b-2">Movies</h3>
-                    <h3 className="cursor-pointer hover:border-b-2">TV Shows</h3>
-                    <h3 className="cursor-pointer hover:border-b-2">Latest</h3>
+                    {/* conditional rendring based on the path */}
+                    {location.pathname === "/browse"
+                    ? <h3 className="cursor-pointer border-b-2 hover:border-b-2" onClick={handleMovies}>Movies</h3>
+                    : <h3 className="cursor-pointer hover:border-b-2" onClick={handleMovies}>Movies</h3>}
+                    {location.pathname === "/tvshows"
+                    ? <h3 className="cursor-pointer border-b-2 hover:border-b-2" onClick={handleTvShows}>TV Shows</h3>
+                    : <h3 className="cursor-pointer hover:border-b-2" onClick={handleTvShows}>TV Shows</h3>}
                 </div>
             </div>
             <div className="m-6 text-white flex gap-5">

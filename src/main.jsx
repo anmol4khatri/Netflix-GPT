@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './pages/Login';
 import Browse from './pages/Browse';
+import TvShows from "./pages/TvShows";
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
 import ProtectedLayout from "./pages/ProtectedLayout";
@@ -19,6 +20,10 @@ let router = createBrowserRouter([
 			{
 				path: "/browse",
 				element: <Browse/>
+			},
+			{
+				path: "/tvshows",
+				element: <TvShows/>
 			}
 		]
 	}
