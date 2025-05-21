@@ -7,6 +7,7 @@ import TvShows from "./pages/TvShows";
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
 import ProtectedLayout from "./pages/ProtectedLayout";
+import AiSearch from './pages/AiSearch';
 
 
 let router = createBrowserRouter([
@@ -24,6 +25,10 @@ let router = createBrowserRouter([
 			{
 				path: "/tvshows",
 				element: <TvShows/>
+			},
+			{
+				path: "/ai_search",
+				element: <AiSearch/>
 			}
 		]
 	}

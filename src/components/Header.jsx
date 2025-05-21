@@ -22,6 +22,9 @@ const Header = () => {
     const handleMovies = () => {
         navigate("/browse");
     };
+    const handleAiSearch = () => {
+        navigate("/ai_search");
+    };
 
     return (
         <div className="absolute top-0 left-0 w-full flex justify-between z-15 bg-black">
@@ -35,6 +38,9 @@ const Header = () => {
                     {location.pathname === "/tvshows"
                     ? <h3 className="cursor-pointer border-b-2 hover:border-b-2" onClick={handleTvShows}>TV Shows</h3>
                     : <h3 className="cursor-pointer hover:border-b-2" onClick={handleTvShows}>TV Shows</h3>}
+                    {location.pathname === "/ai_search"
+                    ? <h3 className="cursor-pointer border-b-2 hover:border-b-2" onClick={handleAiSearch}>AI Powered Search</h3>
+                    : <h3 className="cursor-pointer hover:border-b-2" onClick={handleAiSearch}>AI Powered Search</h3>}
                 </div>
             </div>
             <div className="m-6 text-white flex gap-5">
