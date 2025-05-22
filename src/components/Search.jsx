@@ -28,8 +28,6 @@ const Search = () => {
         const results = await Promise.all(promises);
         dispatch(addtmdbResults(results));
     };
-    console.log(final_results);
-
 
     return (
         <div className=" bg-black text-white p-8 flex flex-col justify-center pt-28">
