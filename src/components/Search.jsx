@@ -1,16 +1,18 @@
 import { FaSearch } from "react-icons/fa";
 import genAi from "../utils/genAi";
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addtmdbResults } from "../utils/searchSlice";
 import { API_OPTIONS } from "../utils/constants";
+import ShowCard from "./ShowCard";
 
 
 const Search = () => {
 
     const dispatch = useDispatch();
-
     const userInput = useRef();
+    const final_results = useSelector((store) => store?.search?.tmdbResults);
+
     const handleSearch = async () => {
         const inputValue = userInput.current?.value?.trim();
         if (!inputValue) return;
@@ -26,10 +28,11 @@ const Search = () => {
         const results = await Promise.all(promises);
         dispatch(addtmdbResults(results));
     };
+    console.log(final_results);
 
 
     return (
-        <div className=" bg-black text-white p-8 flex justify-center pt-28">
+        <div className=" bg-black text-white p-8 flex flex-col justify-center pt-28">
             <div className="flex items-center bg-gray-100 border border-gray-300 rounded-full px-4 py-2 max-w-lg w-full">
                 <input
                     ref={userInput}
@@ -42,10 +45,12 @@ const Search = () => {
                     <FaSearch className="w-5 h-5" />
                 </button>
             </div>
+            <h1 className="pt-10 pl-3 text-2xl font-semibold">Showing Similar Results Like "{userInput.current?.value?.trim()}"</h1>
+            <div className="w-52 pl-3 flex gap-5 pt-7">
+                {final_results.map((result) => <ShowCard poster={result.poster_path} key={result.id}/>)}
+            </div>
         </div>
     );
 };
 
 export default Search;
-
-

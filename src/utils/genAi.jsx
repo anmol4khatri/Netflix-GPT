@@ -8,7 +8,7 @@ const genAi = async (userInput) => {
     model: "gemini-2.0-flash",
     contents: userInput,
     config: {
-      systemInstruction: "Act as a Movie Recommendation System. Your task is to suggest **exactly 5 movie names** that are most relevant to the user query. The response **must only** contain the names of the movies, **comma-separated** without any extra text or explanation. Use the following response format: Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya",
+      systemInstruction: "Act as a Movie Recommendation System. Your task is to suggest **exactly 6 movie names** that are most relevant to the user query. The response **must only** contain the names of the movies, **comma-separated** without any extra text or explanation. Use the following response format: Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya",
     },
   });
   const response_text = response.text;
