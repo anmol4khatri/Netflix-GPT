@@ -9,7 +9,7 @@ const VideoBackground = ({ movieID }) => {
     return (
         <div className="w-full aspect-video bg-black">
             <iframe
-                className="w-full aspect-video"
+                className="w-full aspect-video object-cover"
                 src={`https://www.youtube.com/embed/${key}?autoplay=1&mute=1&loop=1&playlist=${key}&controls=0&modestbranding=1&rel=0&showinfo=0&disablekb=1&fs=0`}
                 title="Video"
                 allow="autoplay; encrypted-media; gyroscope; picture-in-picture"

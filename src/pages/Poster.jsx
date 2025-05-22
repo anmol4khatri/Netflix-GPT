@@ -9,10 +9,10 @@ const Poster = () => {
     const mainMovie = movies[Math.floor(Math.random() * movies.length)];
     const { title, overview, id } = mainMovie;
 
-    return(
-        <div className="">
-            <VideoText title={title} overview={overview} />  
-            <VideoBackground movieID={id} /> 
+    return (
+        <div className="relative w-full max-sm:mt-20">
+            <VideoText title={title} overview={overview} />
+            <VideoBackground movieID={id} />
         </div>
     );
 };

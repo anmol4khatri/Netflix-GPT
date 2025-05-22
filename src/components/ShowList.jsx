@@ -19,7 +19,7 @@ const ShowList = ({ title, shows }) => {
 
       <div className="relative group">
         {/* Scroll Buttons */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-2 z-10">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-2 z-10 max-sm:hidden">
           <button
             onClick={() => scroll("left")}
             className="pointer-events-auto bg-white/80 hover:bg-white text-black p-2 rounded-full shadow"
