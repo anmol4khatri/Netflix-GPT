@@ -31,7 +31,8 @@ const Search = () => {
 
     return (
         <div className=" bg-black text-white p-8 flex flex-col justify-center pt-28">
-            <div className="flex items-center bg-gray-100 border border-gray-300 rounded-full px-4 py-2 max-w-lg w-full">
+            <div className="flex flex-col items-center">
+                <div className="flex items-center bg-gray-100 border border-gray-300 rounded-full px-4 py-2 max-w-lg w-full">
                 <input
                     ref={userInput}
                     type="text"
@@ -43,10 +44,14 @@ const Search = () => {
                     <FaSearch className="w-5 h-5" />
                 </button>
             </div>
+            </div>
+            {userInput.current?.value?.trim() &&
+            <>
             <h1 className="pt-10 pl-3 text-2xl font-semibold">Showing Similar Results Like "{userInput.current?.value?.trim()}"</h1>
             <div className="w-52 pl-3 flex gap-5 pt-7">
                 {final_results.map((result) => <ShowCard poster={result.poster_path} key={result.id}/>)}
             </div>
+            </>}
         </div>
     );
 };
