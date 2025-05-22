@@ -7,9 +7,23 @@ A modern Netflix clone built with React, featuring AI-powered movie recommendati
 - 🎥 Browse movies and TV shows
 - 🔍 AI-powered movie recommendations
 - 🎬 Movie trailers and teasers
-- �� Responsive design
+- Responsive design
 - 🔐 User authentication
 - 🎯 Personalized content discovery
+
+## Screenshots 📸
+
+### Login Page
+![Login Page](/public/screenshot1.png)
+
+### Browse Movies
+![Browse Movies](/public/screenshot2.png)
+
+### TV Shows
+![TV Shows](/public/screenshot3.png)
+
+### AI Search
+![AI Search](/public/screenshot4.png)
 
 ## Tech Stack 🛠
 
@@ -54,8 +68,6 @@ VITE_AI_API_KEY=your_gemini_api_key_here
 npm run dev
 ```
 
-
-
 ## Available Scripts 📜
 
 - `npm run dev` - Start development server
@@ -83,7 +95,6 @@ npm run dev
   - On The Air
   - Popular Shows
   - Top Rated Shows
-
 
 ## Acknowledgments 🙏
 
