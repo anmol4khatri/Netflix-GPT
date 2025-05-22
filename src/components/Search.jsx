@@ -3,7 +3,7 @@ import genAi from "../utils/genAi";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addtmdbResults } from "../utils/searchSlice";
-import { API_OPTIONS } from "../utils/constants";
+import { API_OPTIONS, PROXY_URL } from "../utils/constants";
 import ShowCard from "./ShowCard";
 
 
@@ -19,7 +19,15 @@ const Search = () => {
         const response_array = await genAi(inputValue);
 
         const getTmdbResults = async (item) => {
-            const data = await fetch("https://api.themoviedb.org/3/search/movie?query=" + item + "&include_adult=false&language=en-US&page=1", API_OPTIONS);
+            const data = await fetch(`${PROXY_URL}/api/movies/search`, {
+                ...API_OPTIONS,
+                method: 'POST',
+                headers: {
+                    ...API_OPTIONS.headers,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: item })
+            });
             const json = await data.json();
             return json.results?.[0];
         }
